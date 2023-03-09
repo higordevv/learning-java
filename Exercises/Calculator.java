@@ -7,7 +7,7 @@ public class Calculator {
         int numero1, numero2,
                 soma, subtracao,
                 multiplicacao,
-                divisao,resto;
+                divisao, resto;
 
         System.out.println("==========[ Calculadora Foda ]==========");
         System.out.print("Digite o primeiro numero: ");
@@ -30,5 +30,6 @@ public class Calculator {
         System.out.println("O resto da divisão dos números é: " + resto);
 
         sc.close();
+
     }
 }
