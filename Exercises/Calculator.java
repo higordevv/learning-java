@@ -11,9 +11,17 @@ public class Calculator {
 
         System.out.println("==========[ Calculadora Foda ]==========");
         System.out.print("Digite o primeiro numero: ");
+        while(!sc.hasNextInt() || sc.hasNext(null)){
+            System.out.print("Digite um numero inteiro valido: ");
+            sc.next();
+        }
         numero1 = sc.nextInt();
-
+        
         System.out.print("Digite o segundo numero: ");
+        while(!sc.hasNextInt()){
+            System.out.print("Digite um numero inteiro valido: ");
+            sc.next();
+        }
         numero2 = sc.nextInt();
 
         soma = numero1 + numero2;
