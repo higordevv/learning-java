@@ -1,27 +1,42 @@
-// Programa em Java para calcular a força elétrica utilizando a Lei de Coulomb
-// A Lei de Coulomb é uma lei da Física usada para determinar a intensidade da 
-//força de atração ou repulsão entre duas cargas elétricas.
-
 import java.util.Scanner;
 
 public class Coulomb {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        final double K = 9e9; // constante eletrostática
-        double q1, q2, r, f; // cargas elétricas, distância e força elétrica
+        Scanner scanner = new Scanner(System.in);
+        double q1, q2, d;
 
         // Obtém as cargas elétricas e a distância entre elas do usuário
-        System.out.print("Informe a carga elétrica 1 (em Coulombs): ");
-        q1 = sc.nextDouble();
-        System.out.print("Informe a carga elétrica 2 (em Coulombs): ");
-        q2 = sc.nextDouble();
-        System.out.print("Informe a distância entre as cargas (em metros): ");
-        r = sc.nextDouble();
+        q1 = getDoubleFromUser(scanner, "Informe a carga elétrica 1 (em Coulombs): ");
+        q2 = getDoubleFromUser(scanner, "Informe a carga elétrica 2 (em Coulombs): ");
+        d = getDoubleFromUser(scanner, "Informe a distância entre as cargas (em metros): ");
 
         // Calcula a força elétrica utilizando a Lei de Coulomb
-        f = K * q1 * q2 / (r * r);
+        double force = calculateForce(q1, q2, d);
 
         // Exibe o resultado
-        System.out.println("A força elétrica entre as cargas é de " + f + " Newtons.");
+        System.out.printf("A força elétrica entre as cargas é de %.2f N.\n", force);
+    }
+
+    private static double getDoubleFromUser(Scanner scanner, String prompt) {
+        double value = 0.0;
+        boolean validInput = false;
+
+        while (!validInput) {
+            try {
+                System.out.print(prompt);
+                value = scanner.nextDouble();
+                validInput = true;
+            } catch (Exception e) {
+                System.out.println("Entrada inválida. Tente novamente.");
+                scanner.next();
+            }
+        }
+
+        return value;
+    }
+
+    private static double calculateForce(double q1, double q2, double d) {
+        final double k = 9e9;
+        return k * q1 * q2 / (d * d);
     }
 }
